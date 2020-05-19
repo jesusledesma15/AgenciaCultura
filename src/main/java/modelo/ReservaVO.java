@@ -13,13 +13,14 @@ import java.time.LocalDate;
  */
 public class ReservaVO {
     
+    //crear otra clase, que guarde el cliente entero
+    
     private int idReserva;
-    private ClienteVO idCliente; //preguntar si se guarda el cliente entero
-    //o solo el id
-    private ServicioTuristicoVO idServicio;
+    private int idCliente; 
+    private int idServicio;
     private LocalDate fecha;
 
-    public ReservaVO(int idReserva, ClienteVO idCliente, ServicioTuristicoVO idServicio, LocalDate fecha) {
+    public ReservaVO(int idReserva, int idCliente, int idServicio, LocalDate fecha) {
         this.idReserva = idReserva;
         this.idCliente = idCliente;
         this.idServicio = idServicio;
@@ -42,19 +43,19 @@ public class ReservaVO {
         this.idReserva = idReserva;
     }
 
-    public ClienteVO getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(ClienteVO idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
-    public ServicioTuristicoVO getIdServicio() {
+    public int getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(ServicioTuristicoVO idServicio) {
+    public void setIdServicio(int idServicio) {
         this.idServicio = idServicio;
     }
 
