@@ -52,4 +52,16 @@ public class ClienteDAO {
 
         }
     }
+
+//    public static void main(String[] args) {
+//
+//        String nombre = "Paco";
+//        String apellidos = "Perez";
+//        String correo = "Paco@hotmail.com";
+//        String dni = "77232323O";
+//        String numTarjeta = "4656651657841";
+//
+//        ClienteDAO.insertarCliente(1, nombre, apellidos, correo, dni, numTarjeta);
+//
+//    }
 }

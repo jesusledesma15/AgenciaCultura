@@ -42,7 +42,7 @@ public class Conexion {
         return instancia;
     }
 
-    public static void main(String[] args) {
-        Connection conexion = Conexion.getInstance();
-    }
+//    public static void main(String[] args) {
+//        Connection conexion = Conexion.getInstance();
+//    }
 }

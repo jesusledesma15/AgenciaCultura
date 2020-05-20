@@ -57,7 +57,7 @@ public class AgenciaCultura extends HttpServlet {
         sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
 
 //--------------------------------------------------------------------------------------------------------------
-        ClienteDAO.insertarCliente(0, nombreCliente, apellidosCliente, correoCliente, dniCliente, numTarjetaCliente);
+        ClienteDAO.insertarCliente(2, nombreCliente, apellidosCliente, correoCliente, dniCliente, numTarjetaCliente);
 
     }
 
@@ -71,17 +71,5 @@ public class AgenciaCultura extends HttpServlet {
         processRequest(request, response);
     }
 
-//    public static void main(String[] args) {
-//
-//        String nombre = "Paco";
-//        String apellidos = "Perez";
-//        String correo = "Paco@hotmail.com";
-//        String dni = "77232323O";
-//        String numTarjeta = "4656651657841";
-//        
-//         ClienteDAO.insertarCliente(0, nombre, apellidos, correo, dni, numTarjeta);
-//         
-//
-//
-//    }
+
 }
