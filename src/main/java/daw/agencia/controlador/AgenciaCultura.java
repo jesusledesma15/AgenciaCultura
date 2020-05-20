@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package daw.agencia.controlador;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,10 +51,10 @@ public class AgenciaCultura extends HttpServlet {
 
         // Asigno esos datos a los atributos de la sesión y así lo puedo usar en la vista
         sesion.setAttribute("nombreCliente", nombreCliente);
-        sesion.setAttribute("apellidosCliente", apellidosCliente);
-        sesion.setAttribute("correoCliente", correoCliente);
-        sesion.setAttribute("dniCliente", dniCliente);
-        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
+//        sesion.setAttribute("apellidosCliente", apellidosCliente);
+//        sesion.setAttribute("correoCliente", correoCliente);
+//        sesion.setAttribute("dniCliente", dniCliente);
+//        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
 
 //--------------------------------------------------------------------------------------------------------------
         ClienteDAO.insertarCliente(2, nombreCliente, apellidosCliente, correoCliente, dniCliente, numTarjetaCliente);
