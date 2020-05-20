@@ -5,10 +5,15 @@
  */
 package modelo;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Salva
  */
 public class ServicioTuristicoDAO {
+
+    private static final Connection CONEXION = Conexion.getInstance();
+
     
 }
