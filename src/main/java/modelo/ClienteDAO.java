@@ -7,7 +7,9 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -17,7 +19,7 @@ public class ClienteDAO {
 
     private static final Connection CONEXION = Conexion.getInstance();
 
-    public static void insertarCliente(int idCliente, String nombre, String apellidos, String correo, String dni, String numTarjeta) {
+    public static void insertarCliente(String nombre, String apellidos, String correo, String dni, String numTarjeta) {
 
         // Cadena con la consulta parametrizada
         String sql = "insert into clientes values (?,?,?,?,?,?)";
@@ -32,7 +34,7 @@ public class ClienteDAO {
             // Usamos los métodos setXXX(indice, valor)
             // indice indica la posicion del argumento ?, empieza en 1
             // valor es el dato que queremos insertar
-            prest.setInt(1, idCliente);
+            prest.setInt(1, numIds());
             prest.setString(2, nombre);
             prest.setString(3, apellidos);
             prest.setString(4, correo);
@@ -53,6 +55,38 @@ public class ClienteDAO {
         }
     }
 
+    public static int numIds() {
+        Statement st;
+        ResultSet res;
+        int numEmails = 0;
+
+        // Guardo la consulta SQL realizar en una cadena
+        //hacer consulta para contar, los emails
+        String sql = "select count(*) as num from clientes ";
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+            if (res.next()) {
+
+                //pasamos numEmails a entero
+                numEmails = res.getInt("num");
+
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas durante la consulta en tabla clientes");
+            System.out.println(e);
+        }
+
+        return ++numEmails;
+    }
+
 //    public static void main(String[] args) {
 //
 //        String nombre = "Paco";
@@ -61,7 +95,7 @@ public class ClienteDAO {
 //        String dni = "77232323O";
 //        String numTarjeta = "4656651657841";
 //
-//        ClienteDAO.insertarCliente(1, nombre, apellidos, correo, dni, numTarjeta);
-//
+//        ClienteDAO.insertarCliente( nombre, apellidos, correo, dni, numTarjeta);
+//        System.out.println(ClienteDAO.numIds());
 //    }
 }
