@@ -53,5 +53,10 @@ public class ReservaDAO {
 
         }
     }
+    public static void main(String[] args) {
+
+        ReservaDAO.insertarReserva(1, 1, 1, LocalDate.now());
+
+    }
     
 }
