@@ -58,7 +58,8 @@ public class AgenciaCultura extends HttpServlet {
 
 //--------------------------------------------------------------------------------------------------------------
         ClienteDAO.insertarCliente(2, nombreCliente, apellidosCliente, correoCliente, dniCliente, numTarjetaCliente);
-
+        RequestDispatcher despachador = contexto.getRequestDispatcher("/Respuesta.jsp");
+        despachador.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -70,6 +71,5 @@ public class AgenciaCultura extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
 
 }
