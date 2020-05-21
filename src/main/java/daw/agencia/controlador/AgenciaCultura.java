@@ -57,7 +57,7 @@ public class AgenciaCultura extends HttpServlet {
 //        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
 
 //--------------------------------------------------------------------------------------------------------------
-        ClienteDAO.insertarCliente(2, nombreCliente, apellidosCliente, correoCliente, dniCliente, numTarjetaCliente);
+        ClienteDAO.insertarCliente(nombreCliente, apellidosCliente, correoCliente, dniCliente, numTarjetaCliente);
         RequestDispatcher despachador = contexto.getRequestDispatcher("/Respuesta.jsp");
         despachador.forward(request, response);
     }
