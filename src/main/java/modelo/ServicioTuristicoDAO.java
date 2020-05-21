@@ -17,7 +17,7 @@ public class ServicioTuristicoDAO {
 
     private static final Connection CONEXION = Conexion.getInstance();
 
-       public static void insertarCliente(int idServicio, String descripcion, double precio) {
+       public static void insertarServicio(int idServicio, String descripcion, double precio) {
 
         // Cadena con la consulta parametrizada
         String sql = "insert into servicios values (?,?,?)";
@@ -51,7 +51,7 @@ public class ServicioTuristicoDAO {
     }
     public static void main(String[] args) {
 
-        ServicioTuristicoDAO.insertarCliente(1, "Gastronomía", 50);
+        ServicioTuristicoDAO.insertarServicio(1, "Gastronomía", 50);
 
     }
 }
