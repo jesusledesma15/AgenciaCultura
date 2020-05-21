@@ -5,10 +5,16 @@
  */
 package modelo;
 
+
+import java.sql.Connection;
+
 /**
  *
  * @author Salva
  */
 public class ReservaDAO {
+    
+      private static final Connection CONEXION = Conexion.getInstance();
+    
     
 }
