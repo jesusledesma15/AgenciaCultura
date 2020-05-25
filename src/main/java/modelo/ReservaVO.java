@@ -20,8 +20,8 @@ public class ReservaVO {
     private int idServicio;
     private LocalDate fecha;
 
-    public ReservaVO(int idReserva, int idCliente, int idServicio, LocalDate fecha) {
-        this.idReserva = idReserva;
+    public ReservaVO(int idCliente, int idServicio, LocalDate fecha) {
+        this.idReserva = 
         this.idCliente = idCliente;
         this.idServicio = idServicio;
         this.fecha = fecha;
