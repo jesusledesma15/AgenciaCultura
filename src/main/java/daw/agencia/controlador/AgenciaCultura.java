@@ -57,6 +57,15 @@ public class AgenciaCultura extends HttpServlet {
 //        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
 
 //--------------------------------------------------------------------------------------------------------------
+        if (ClienteDAO.login(dniCliente, correoCliente) ) {
+            RequestDispatcher despachador = contexto.getRequestDispatcher("/Logeado.jsp");
+            despachador.forward(request, response);
+        }
+//        else{
+////               RequestDispatcher despachador = contexto.getRequestDispatcher("/Formulario_Registro.jsp");
+////            despachador.forward(request, response);
+//        }
+
         if (!ClienteDAO.consultarDni(dniCliente)) {
             ClienteDAO.insertarCliente(nombreCliente, apellidosCliente, correoCliente, dniCliente, numTarjetaCliente);
             RequestDispatcher despachador = contexto.getRequestDispatcher("/Respuesta_No_Existe.jsp");
