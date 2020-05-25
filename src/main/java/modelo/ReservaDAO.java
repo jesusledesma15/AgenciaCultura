@@ -8,7 +8,9 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 /**
@@ -19,7 +21,7 @@ public class ReservaDAO {
     
       private static final Connection CONEXION = Conexion.getInstance();
 
-       public static void insertarReserva(int idReserva, int idCliente, int idServicio, LocalDate fecha) {
+       public static void insertarReserva(int idCliente, int idServicio, LocalDate fecha) {
 
         // Cadena con la consulta parametrizada
         String sql = "insert into reservas values (?,?,?,?)";
@@ -34,7 +36,7 @@ public class ReservaDAO {
             // Usamos los métodos setXXX(indice, valor)
             // indice indica la posicion del argumento ?, empieza en 1
             // valor es el dato que queremos insertar
-            prest.setInt(1, idReserva);
+            prest.setInt(1, numIds());
             prest.setInt(2, idCliente);
             prest.setInt(3, idServicio);
             prest.setDate(4, java.sql.Date.valueOf(fecha));
@@ -53,9 +55,43 @@ public class ReservaDAO {
 
         }
     }
+       
+       
+    public static int numIds() {
+        Statement st;
+        ResultSet res;
+        int numReservas = 0;
+
+        // Guardo la consulta SQL realizar en una cadena
+        //hacer consulta para contar, los emails
+        String sql = "select count(*) as num from reservas ";
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+            if (res.next()) {
+
+                //pasamos numEmails a entero
+                numReservas = res.getInt("num");
+
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas durante la consulta en tabla clientes");
+            System.out.println(e);
+        }
+
+        return ++numReservas;
+    }
+       
     public static void main(String[] args) {
 
-        ReservaDAO.insertarReserva(1, 1, 1, LocalDate.now());
+        ReservaDAO.insertarReserva(1, 1, LocalDate.now());
 
     }
     
