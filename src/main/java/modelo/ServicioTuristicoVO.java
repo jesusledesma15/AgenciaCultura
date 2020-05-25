@@ -15,8 +15,7 @@ public class ServicioTuristicoVO {
     private String descripcion;
     private double precio;
 
-    public ServicioTuristicoVO(int idServicio, String descripcion, double precio) {
-        this.idServicio = idServicio;
+    public ServicioTuristicoVO(String descripcion, double precio) {
         this.descripcion = descripcion;
         this.precio = precio;
     }
