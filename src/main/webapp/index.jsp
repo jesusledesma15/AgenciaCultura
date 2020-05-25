@@ -12,30 +12,29 @@
 
 <html>
     <head>
-        <title>Registro clientes</title>
+        <title>Bienvenida</title>
         <meta charset="UTF-8" />
         <link href="./css/estilo.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
 
-        <h1>Formulario de registros</h1>
+        <h1>Bienvenida</h1>
 
-        <p><font size="7">Registro clientes</font></p>
+        <p><font size="7">Pagina de Bienvenida</font></p>
+
 
         <form action="./AgenciaCultura" method="POST">
-
-            <p> Nombre del cliente   <input type="text" size="20" name="txtNombre">   </p>
-            <p> Apellido del cliente   <input type="text" size="20" name="txtApellidos">   </p>
+            <p>login</p>
+            
             <p> Correo electrónico:  <input type="email" size="40" name="txtCorreo"> </p>
             <p> DNI   <input type="text" size="9" name="txtDni">   </p>
-            <p> Número de tarjeta de credito   <input type="text" size="16" name="txtNumTarjeta">   </p>
+            <p> <input type="submit" name="buttonSubmit" value="Login"> </p>
 
-
-
-            <p> <input type="submit" name="buttonSubmit" value="Enviar"> 
-                <input type="reset" name="buttonReset" value="Reset"> </p>
         </form>
+
+        <a href="Formulario_Registro.jsp">¿Aun no te has registrado?</a>
+
     </body>
 </html>
 
