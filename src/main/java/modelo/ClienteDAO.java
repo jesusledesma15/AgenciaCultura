@@ -128,15 +128,15 @@ public class ClienteDAO {
         return ++numId;
     }
 
-    public static void main(String[] args) {
-
-        String nombre = "Paco";
-        String apellidos = "Perez";
-        String correo = "Paco2@hotmail.com";
-        String dni = "77232323P";
-        String numTarjeta = "4656651657841";
-
-        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
-        System.out.println(ClienteDAO.consultarDni(dni));
-    }
+//    public static void main(String[] args) {
+//
+//        String nombre = "Paco";
+//        String apellidos = "Perez";
+//        String correo = "Paco2@hotmail.com";
+//        String dni = "77232323P";
+//        String numTarjeta = "4656651657841";
+//
+//        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
+//        System.out.println(ClienteDAO.consultarDni(dni));
+//    }
 }
