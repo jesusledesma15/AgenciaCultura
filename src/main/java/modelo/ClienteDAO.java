@@ -58,7 +58,7 @@ public class ClienteDAO {
     public static int numIds() {
         Statement st;
         ResultSet res;
-        int numEmails = 0;
+        int numId = 0;
 
         // Guardo la consulta SQL realizar en una cadena
         //hacer consulta para contar, los emails
@@ -73,7 +73,7 @@ public class ClienteDAO {
             if (res.next()) {
 
                 //pasamos numEmails a entero
-                numEmails = res.getInt("num");
+                numId = res.getInt("num");
 
             }
             // Cerramos el recurso PreparedStatement 
@@ -84,7 +84,7 @@ public class ClienteDAO {
             System.out.println(e);
         }
 
-        return ++numEmails;
+        return ++numId;
     }
 
 //    public static void main(String[] args) {
