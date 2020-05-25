@@ -7,7 +7,9 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -17,7 +19,7 @@ public class ServicioTuristicoDAO {
 
     private static final Connection CONEXION = Conexion.getInstance();
 
-       public static void insertarServicio(int idServicio, String descripcion, double precio) {
+    public static void insertarServicio(String descripcion, double precio) {
 
         // Cadena con la consulta parametrizada
         String sql = "insert into servicios values (?,?,?)";
@@ -32,7 +34,7 @@ public class ServicioTuristicoDAO {
             // Usamos los métodos setXXX(indice, valor)
             // indice indica la posicion del argumento ?, empieza en 1
             // valor es el dato que queremos insertar
-            prest.setInt(1, idServicio);
+            prest.setInt(1, numIds());
             prest.setString(2, descripcion);
             prest.setDouble(3, precio);
 
@@ -49,9 +51,42 @@ public class ServicioTuristicoDAO {
 
         }
     }
+
+    public static int numIds() {
+        Statement st;
+        ResultSet res;
+        int numServicio = 0;
+
+        // Guardo la consulta SQL realizar en una cadena
+        //hacer consulta para contar, los emails
+        String sql = "select count(*) as num from servicios ";
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+            if (res.next()) {
+
+                //pasamos numEmails a entero
+                numServicio = res.getInt("num");
+
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas durante la consulta en tabla Servicios");
+            System.out.println(e);
+        }
+
+        return ++numServicio;
+    }
+
     public static void main(String[] args) {
 
-        ServicioTuristicoDAO.insertarServicio(1, "Gastronomía", 50);
+        ServicioTuristicoDAO.insertarServicio("Museo", 50);
 
     }
 }
