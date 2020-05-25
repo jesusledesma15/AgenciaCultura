@@ -55,6 +55,49 @@ public class ClienteDAO {
         }
     }
 
+    public static boolean login(String dniJsp, String correo) {
+        Statement st;
+        ResultSet res;
+        boolean login = false;
+
+        // Guardo la consulta SQL realizar en una cadena
+        //hacer consulta para contar, los emails
+        String sql = "select dni as email from clientes where correo='" + correo + "'";
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+            if (res.next()) {
+
+                //pasamos numEmails a entero
+                String dniDB = res.getString("email");
+
+                //System.out.println("numEmails "+numEmails);
+                //si la consulta de los emails, da mas de 0...
+                System.out.println("dniDB " + dniDB);
+                System.out.println("dniJsp " + dniJsp);
+
+                if (dniDB.equals(dniJsp)) {
+                    login = true;
+                } else {
+                    login = false;
+                }
+
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas durante la consulta en tabla cliente");
+            System.out.println(e);
+        }
+
+        return login;
+    }
+
     //metodo para ver si existe un cliente consultando la tabla por su dni
     public static boolean consultarDni(String dni) {
         Statement st;
@@ -128,15 +171,15 @@ public class ClienteDAO {
         return ++numId;
     }
 
-//    public static void main(String[] args) {
-//
-//        String nombre = "Paco";
-//        String apellidos = "Perez";
-//        String correo = "Paco2@hotmail.com";
-//        String dni = "77232323P";
-//        String numTarjeta = "4656651657841";
-//
+    public static void main(String[] args) {
+
+        String nombre = "Paco";
+        String apellidos = "Perez";
+        String correo = "Paco2@hotmail.com";
+        String dni = "77232323M";
+        String numTarjeta = "4656651657841";
+
 //        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
-//        System.out.println(ClienteDAO.consultarDni(dni));
-//    }
+        System.out.println(ClienteDAO.login(dni, correo));
+    }
 }
