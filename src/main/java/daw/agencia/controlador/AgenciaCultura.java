@@ -58,15 +58,14 @@ public class AgenciaCultura extends HttpServlet {
 
 //--------------------------------------------------------------------------------------------------------------
         //parte del login        
+        //Si el metodo login devuelve true, se envia a la pagina principal, sino no pasa de la pagina index
         if (ClienteDAO.login(dniCliente, correoCliente)) {
             RequestDispatcher despachador = contexto.getRequestDispatcher("/Logeado.jsp");
             despachador.forward(request, response);
         } else {
-             RequestDispatcher despachador = contexto.getRequestDispatcher("/index.jsp");
+            RequestDispatcher despachador = contexto.getRequestDispatcher("/index.jsp");
             despachador.forward(request, response);
-            
-//            RequestDispatcher despachador = contexto.getRequestDispatcher("/Formulario_Registro.jsp");
-//            despachador.forward(request, response);
+
         }
 
     }
