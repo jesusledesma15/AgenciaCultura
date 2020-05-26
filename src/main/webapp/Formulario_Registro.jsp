@@ -23,7 +23,7 @@
 
         <p><font size="7">Registro clientes</font></p>
 
-        <form action="./AgenciaCultura" method="POST">
+        <form action="./Registro" method="POST">
 
             <p> Nombre del cliente   <input type="text" size="20" name="txtNombre">   </p>
             <p> Apellido del cliente   <input type="text" size="20" name="txtApellidos">   </p>
