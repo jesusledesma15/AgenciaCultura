@@ -18,23 +18,27 @@
     </head>
 
     <body>
+        <div id="contenedor">
+            <header>
+                <h1>Agencia Cultural S&J</h1>
+                <form action="./AgenciaCultura" method="POST">
+                    <label for="correo"> Correo electrónico: </label>
+                    <input type="email" size="40" name="txtCorreo" id="correo"/>
+                    <label for="nif">NIF:</label>
+                    <input type="password" size="9" name="txtDni" id="nif"/>
+                    
+                    <input type="submit" name="buttonSubmit" value="Login">
+                </form>
 
-        <h1>Bienvenida</h1>
+                <p><a href="Formulario_Registro.jsp">¿Aun no te has registrado?</a></p>
+            </header>
+            <main>
 
-        <p><font size="7">Pagina de Bienvenida</font></p>
+            </main>
 
 
-        <form action="./AgenciaCultura" method="POST">
-            <p>login</p>
-            
-            <p> Correo electrónico:  <input type="email" size="40" name="txtCorreo"> </p>
-            <p> DNI   <input type="text" size="9" name="txtDni">   </p>
-            <p> <input type="submit" name="buttonSubmit" value="Login"> </p>
 
-        </form>
-
-        <a href="Formulario_Registro.jsp">¿Aun no te has registrado?</a>
-
+        </div>
     </body>
 </html>
 
