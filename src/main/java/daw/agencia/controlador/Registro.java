@@ -55,7 +55,7 @@ public class Registro extends HttpServlet {
 
         // Asigno esos datos a los atributos de la sesión y así lo puedo usar en la vista
         sesion.setAttribute("nombreCliente", nombreCliente);
-//        sesion.setAttribute("apellidosCliente", apellidosCliente);
+        sesion.setAttribute("apellidosCliente", apellidosCliente);
 //        sesion.setAttribute("correoCliente", correoCliente);
 //        sesion.setAttribute("dniCliente", dniCliente);
 //        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
