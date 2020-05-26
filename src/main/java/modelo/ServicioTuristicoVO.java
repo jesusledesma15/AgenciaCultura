@@ -20,6 +20,12 @@ public class ServicioTuristicoVO {
         this.precio = precio;
     }
 
+    public ServicioTuristicoVO() {
+        
+    }
+    
+    
+
     public double getPrecio() {
         return precio;
     }
