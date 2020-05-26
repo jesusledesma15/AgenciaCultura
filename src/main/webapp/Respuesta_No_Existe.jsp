@@ -17,7 +17,7 @@
         <link href="./css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <h1>Cliente registrado</h1>
+        <h1>Se ha registrado correctamente</h1>
         <button type="button" onclick="location.href = './index.jsp'">Volver</button>   
 
     </body>
