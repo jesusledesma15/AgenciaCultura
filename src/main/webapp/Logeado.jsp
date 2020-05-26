@@ -13,5 +13,7 @@
     </head>
     <body>
         <h1>Te has logeado</h1>
+        <button type="button" onclick="location.href = './index.jsp'">Volver</button>   
+
     </body>
 </html>
