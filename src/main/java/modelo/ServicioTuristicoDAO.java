@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -50,6 +51,41 @@ public class ServicioTuristicoDAO {
             System.out.println(e);
 
         }
+    }
+    
+     public static ArrayList<ServicioTuristicoVO> consultarServicios(){
+        Statement st;
+        ResultSet res;
+        ArrayList<ServicioTuristicoVO> lista = new ArrayList();
+        
+        // Guardo la consulta SQL realizar en una cadena
+        String sql = "select * from servicios;";
+
+        try {
+            
+            // Preparamos Statement
+            st = CONEXION.createStatement(); 
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+            while (res.next()){
+                ServicioTuristicoVO s = new ServicioTuristicoVO();
+                // Recogemos los datos del turismo, guardamos en un objeto
+                s.setDescripcion(res.getString("descripcion"));
+                s.setPrecio(res.getDouble("precio"));
+
+                //Añadimos el objeto al array
+                lista.add(s);
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas durante la consulta en tabla Servicios");
+            System.out.println(e); 
+        }
+
+        return lista;  
     }
 
     public static int numIds() {
