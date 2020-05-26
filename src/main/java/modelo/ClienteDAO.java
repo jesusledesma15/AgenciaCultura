@@ -19,6 +19,7 @@ public class ClienteDAO {
 
     private static final Connection CONEXION = Conexion.getInstance();
 
+    //metodo para insertar clientes en la base de datos
     public static void insertarCliente(String nombre, String apellidos, String correo, String dni, String numTarjeta) {
 
         // Cadena con la consulta parametrizada
@@ -34,7 +35,7 @@ public class ClienteDAO {
             // Usamos los métodos setXXX(indice, valor)
             // indice indica la posicion del argumento ?, empieza en 1
             // valor es el dato que queremos insertar
-            prest.setInt(1, numIds());
+            prest.setInt(1, numIds()); //metodo que devuelve el numero de clientes mas uno, sirve para darle la id automaticamente
             prest.setString(2, nombre);
             prest.setString(3, apellidos);
             prest.setString(4, correo);
@@ -55,13 +56,14 @@ public class ClienteDAO {
         }
     }
 
+    //metodo para logearse en la pagina, que recibe un dni y un correo
     public static boolean login(String dniJsp, String correo) {
         Statement st;
         ResultSet res;
         boolean login = false;
 
         // Guardo la consulta SQL realizar en una cadena
-        //hacer consulta para contar, los emails
+        //devuelve el dni, que coincida con el correo
         String sql = "select dni as email from clientes where correo='" + correo + "'";
         try {
 
@@ -75,11 +77,10 @@ public class ClienteDAO {
                 //pasamos numEmails a entero
                 String dniDB = res.getString("email");
 
-                //System.out.println("numEmails "+numEmails);
-                //si la consulta de los emails, da mas de 0...
                 System.out.println("dniDB " + dniDB);
                 System.out.println("dniJsp " + dniJsp);
 
+                //si el dni de la base de datos es igual que el pasado por parametros, la variable login vale true, sino vale false
                 if (dniDB.equals(dniJsp)) {
                     login = true;
                 } else {
@@ -119,7 +120,7 @@ public class ClienteDAO {
                 //pasamos numEmails a entero
                 int numDnis = res.getInt("dni");
                 //System.out.println("numEmails "+numEmails);
-                //si la consulta de los emails, da mas de 0...
+                //si la consulta de el dni, da mas de 0...
                 if (numDnis > 0) {
                     existe = true;
                 } else {
@@ -138,7 +139,7 @@ public class ClienteDAO {
         return existe;
     }
 
-    //metodo que devuelve el id siguiente del cliente
+    //metodo que devuelve el id siguiente del cliente, se usara para asignar una id al siguiente cliente
     public static int numIds() {
         Statement st;
         ResultSet res;
@@ -156,7 +157,7 @@ public class ClienteDAO {
             // Ahora construimos la lista
             if (res.next()) {
 
-                //pasamos numEmails a entero
+                //pasamos el alias num a entero
                 numId = res.getInt("num");
 
             }
@@ -168,18 +169,19 @@ public class ClienteDAO {
             System.out.println(e);
         }
 
+        //devuelve el ultimo id mas uno 
         return ++numId;
     }
 
-    public static void main(String[] args) {
-
-        String nombre = "Paco";
-        String apellidos = "Perez";
-        String correo = "Paco2@hotmail.com";
-        String dni = "77232323M";
-        String numTarjeta = "4656651657841";
-
-//        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
-        System.out.println(ClienteDAO.login(dni, correo));
-    }
+//    public static void main(String[] args) {
+//
+//        String nombre = "Paco";
+//        String apellidos = "Perez";
+//        String correo = "Paco2@hotmail.com";
+//        String dni = "77232323M";
+//        String numTarjeta = "4656651657841";
+//
+////        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
+//        System.out.println(ClienteDAO.login(dni, correo));
+//    }
 }
