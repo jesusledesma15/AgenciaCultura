@@ -19,21 +19,21 @@
         <form action="./AgenciaCultura" method="post">
             <fieldset>
                 <legend>Cliente</legend>
-                <label for="nombreCli">Nombre: </label>
-                <input type="text" id="nombreCli"/> <br/><br/>
+                <label for="nombreCli">Correo: </label>
+                <input type="text" id="nombreCli" name="txtEmail"/> <br/><br/>
                 <label for="nifCli">NIF: </label>
-                <input type="text" id="nifCli" maxlength="9"/> <br/>
+                <input type="text" id="nifCli" name="txtNif" maxlength="9"/> <br/>
             </fieldset>
             <fieldset>
                 <legend>Servicio</legend>
                 <%
-                    // Lista ordenada por votos, de mayor a menor
+                    // Lista de servicios
                     ArrayList<ServicioTuristicoVO> lista = ServicioTuristicoDAO.consultarServicios();
 
                     for (ServicioTuristicoVO s : lista) {
-                        out.print("<label for='"+s.getDescripcion()+"'>"+s.getDescripcion()+"</label> \t");
+                        out.print("<label for='" + s.getDescripcion() + "'>" + s.getDescripcion() + "</label> \t");
                         out.print(s.getPrecio() + "€");
-                        out.print("<input type='radio' name='servicio' id='"+s.getDescripcion()+"'   value='"+s.getDescripcion()+"'/>");
+                        out.print("<input type='radio' name='servicio' id='" + s.getDescripcion() + "'   value='" + s.getIdServicio() + "'/>");
                         out.println("<br/><br/>");
 
                     }
