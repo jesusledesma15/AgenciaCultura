@@ -64,16 +64,19 @@ public class Registro extends HttpServlet {
 //        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
 
         //Contratar Reserva
-        String nifCli = request.getParameter("txtNif");
-        String correoCli = request.getParameter("txtEmail");
-        String idServicio = request.getParameter("servicio");
-        //Controlamos las credenciales del usuario que contrata el servicio
-        System.out.println("nifCli: " + nifCli);
-         System.out.println("correoCli: " + correoCli);
-        if (ClienteDAO.checkUser(nifCli, correoCli)) {
-            ReservaDAO.insertarReserva((ClienteDAO.getIdbyNif(dniCliente)), Integer.parseInt(idServicio), LocalDate.now());
-        }
+//        String nifCli = request.getParameter("txtNif");
+//        String correoCli = request.getParameter("txtEmail");
+//        String idServicio = request.getParameter("servicio");
+//
+//        //Controlamos las credenciales del usuario que contrata el servicio
+////        System.out.println("ClienteDAO.checkUser(nifCli, correoCli): " + ClienteDAO.checkUser(nifCli, correoCli));
+//        System.out.println("getIdbyNif " + (ClienteDAO.getIdbyNif(dniCliente)));
+//
+//        ReservaDAO.insertarReserva((ClienteDAO.getIdbyNif(dniCliente)), Integer.parseInt(idServicio), LocalDate.now());
 
+//        if (ClienteDAO.checkUser(nifCli, correoCli)) {
+//            ReservaDAO.insertarReserva((ClienteDAO.getIdbyNif(dniCliente)), Integer.parseInt(idServicio), LocalDate.now());
+//        }
 //--------------------------------------------------------------------------------------------------------------
         //parte del registro
         if (!ClienteDAO.consultarDni(dniCliente)) {
