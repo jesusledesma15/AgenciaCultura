@@ -99,6 +99,38 @@ public class ClienteDAO {
         return login;
     }
 
+    public static int getIdbyNif(String nif) {
+        Statement st;
+        ResultSet res;
+        int id = -1;
+
+        // Guardo la consulta SQL realizar en una cadena
+        String sql = "select idCliente from clientes where dni='" + nif.toUpperCase() + "'";
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+            if (res.next()) {
+
+                id = res.getInt("idCliente");
+
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("No se ha encontrado id para ese NIF");
+            System.out.println(e);
+        }
+
+        return id;
+    }
+
+   
+
     //metodo para ver si existe un cliente consultando la tabla por su dni
     public static boolean consultarDni(String dni) {
         Statement st;
@@ -173,8 +205,13 @@ public class ClienteDAO {
         return ++numId;
     }
 
-//    public static void main(String[] args) {
-//
+    public static void main(String[] args) {
+        
+        String nif = "09077887J";
+        System.out.println(checkUser(nif, "jesusledesma15@gmail.com"));
+        
+        System.out.println("idCliente con NIF "+nif+" -> " + getIdbyNif(nif));
+
 //        String nombre = "Paco";
 //        String apellidos = "Perez";
 //        String correo = "Paco2@hotmail.com";
@@ -183,5 +220,5 @@ public class ClienteDAO {
 //
 ////        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
 //        System.out.println(ClienteDAO.login(dni, correo));
-//    }
+    }
 }
