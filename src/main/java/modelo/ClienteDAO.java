@@ -129,7 +129,40 @@ public class ClienteDAO {
         return id;
     }
 
-   
+    public static boolean checkUser(String dni, String correo) {
+        Statement st;
+        ResultSet res;
+        boolean valido = false;
+        // Guardo la consulta SQL realizar en una cadena
+        //hacer consulta para contar, los emails
+        String sql = "select correo from clientes where dni='" + dni + "'";
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+            if (res.next()) {
+
+                //pasamos numEmails a entero
+                String checkCorreo = res.getString("correo");
+                System.out.println(checkCorreo);
+                //System.out.println("numEmails "+numEmails);
+                //si la consulta de el dni, da mas de 0...
+                valido = checkCorreo.equals(correo);
+
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("El usuario no es válido");
+            System.out.println(e);
+        }
+
+        return valido;
+    }
 
     //metodo para ver si existe un cliente consultando la tabla por su dni
     public static boolean consultarDni(String dni) {
