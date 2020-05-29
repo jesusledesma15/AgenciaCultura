@@ -7,6 +7,7 @@ package daw.agencia.controlador;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.ClienteDAO;
+import modelo.ReservaDAO;
+import modelo.ServicioTuristicoDAO;
 
 /**
  *
@@ -59,6 +62,17 @@ public class Registro extends HttpServlet {
 //        sesion.setAttribute("correoCliente", correoCliente);
 //        sesion.setAttribute("dniCliente", dniCliente);
 //        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
+
+        //Contratar Reserva
+        String nifCli = request.getParameter("txtNif");
+        String correoCli = request.getParameter("txtEmail");
+        String idServicio = request.getParameter("servicio");
+        //Controlamos las credenciales del usuario que contrata el servicio
+        System.out.println("nifCli: " + nifCli);
+         System.out.println("correoCli: " + correoCli);
+        if (ClienteDAO.checkUser(nifCli, correoCli)) {
+            ReservaDAO.insertarReserva((ClienteDAO.getIdbyNif(dniCliente)), Integer.parseInt(idServicio), LocalDate.now());
+        }
 
 //--------------------------------------------------------------------------------------------------------------
         //parte del registro
