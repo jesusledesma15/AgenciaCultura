@@ -6,6 +6,7 @@
 package daw.agencia.controlador;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.ClienteDAO;
+import modelo.ReservaDAO;
 
 /**
  *
@@ -68,6 +70,17 @@ public class AgenciaCultura extends HttpServlet {
 
         }
 
+        //Contratar Reserva
+        String nifCli = request.getParameter("txtNif");
+        String correoCli = request.getParameter("txtEmail");
+        String idServicio = request.getParameter("servicio");
+
+        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(dniCliente), 1, LocalDate.now());
+
+//        if (ClienteDAO.checkUser(nifCli, correoCli)) {
+//            ReservaDAO.insertarReserva((ClienteDAO.getIdbyNif(dniCliente)), Integer.parseInt(idServicio), LocalDate.now());
+//        }
+//-----------------------------------------------------------------------------
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
