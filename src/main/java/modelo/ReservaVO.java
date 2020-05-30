@@ -27,6 +27,9 @@ public class ReservaVO {
         this.fecha = fecha;
     }
 
+    public ReservaVO() {
+    }
+
     public LocalDate getFecha() {
         return fecha;
     }
