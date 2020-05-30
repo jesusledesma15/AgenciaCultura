@@ -6,10 +6,13 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -55,6 +58,7 @@ public class ClienteDAO {
 
         }
     }
+    //-----------------------------------------------------------------------------------
 
     //metodo para logearse en la pagina, que recibe un dni y un correo
     public static boolean login(String dniJsp, String correo) {
@@ -77,9 +81,8 @@ public class ClienteDAO {
                 //pasamos numEmails a entero
                 String dniDB = res.getString("email");
 
-                System.out.println("dniDB " + dniDB);
-                System.out.println("dniJsp " + dniJsp);
-
+//                System.out.println("dniDB " + dniDB);
+//                System.out.println("dniJsp " + dniJsp);
                 //si el dni de la base de datos es igual que el pasado por parametros, la variable login vale true, sino vale false
                 if (dniDB.equals(dniJsp)) {
                     login = true;
@@ -98,6 +101,7 @@ public class ClienteDAO {
 
         return login;
     }
+    //-----------------------------------------------------------------------------------
 
     public static int getIdbyNif(String nif) {
         Statement st;
@@ -105,7 +109,7 @@ public class ClienteDAO {
         int id = -1;
 
         // Guardo la consulta SQL realizar en una cadena
-        String sql = "select idCliente from clientes where dni='" + nif.toUpperCase() + "'";
+        String sql = "select idCliente as IdbyNif from clientes where dni='" + nif.toUpperCase() + "'";
         try {
 
             // Preparamos Statement
@@ -115,7 +119,7 @@ public class ClienteDAO {
             // Ahora construimos la lista
             if (res.next()) {
 
-                id = res.getInt("idCliente");
+                id = res.getInt("IdbyNif");
 
             }
             // Cerramos el recurso PreparedStatement 
@@ -128,6 +132,7 @@ public class ClienteDAO {
 
         return id;
     }
+    //-----------------------------------------------------------------------------------
 
     public static boolean checkUser(String dni, String correo) {
         Statement st;
@@ -163,6 +168,7 @@ public class ClienteDAO {
 
         return valido;
     }
+    //-----------------------------------------------------------------------------------
 
     //metodo para ver si existe un cliente consultando la tabla por su dni
     public static boolean consultarDni(String dni) {
@@ -203,6 +209,7 @@ public class ClienteDAO {
 
         return existe;
     }
+    //-----------------------------------------------------------------------------------
 
     //metodo que devuelve el id siguiente del cliente, se usara para asignar una id al siguiente cliente
     public static int numIds() {
@@ -238,20 +245,68 @@ public class ClienteDAO {
         return ++numId;
     }
 
-    public static void main(String[] args) {
-        
-        String nif = "09077887J";
-        System.out.println(checkUser(nif, "jesusledesma15@gmail.com"));
-        
-        System.out.println("idCliente con NIF "+nif+" -> " + getIdbyNif(nif));
+    //-----------------------------------------------------------------------------------
+    //metodo para consultar las reservas, por id
+    public static ArrayList<ReservaVO> consultarReservas(int idCliente) {
+        Statement st;
+        ResultSet res;
+        ArrayList<ReservaVO> lista = new ArrayList();
 
+        // Guardo la consulta SQL realizar en una cadena
+        String sql = "select * from reservas where idCliente='" + idCliente + "'";
+//        String sql = "select * from reservas ";
+
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+
+            while (res.next()) {
+                ReservaVO r = new ReservaVO();
+                // Recogemos los datos del turismo, guardamos en un objeto
+                r.setIdReserva(res.getInt("idReserva"));
+                r.setIdCliente(res.getInt("idCliente"));
+                r.setIdServicio(res.getInt("idServicio"));
+//                r.setFecha(res.getDate(Date.valueOf(fecha)));
+
+                //Añadimos el objeto al array
+                lista.add(r);
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas durante la consulta en tabla reservas");
+            System.out.println(e);
+        }
+
+        return lista;
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<ReservaVO> listaReservas = consultarReservas(getIdbyNif("87542132U"));
+//        
+        for (int i = 0; i < listaReservas.size(); i++) {
+            System.out.println(listaReservas.get(i));
+        }
+
+//        String nif = "09077887J";
+//        System.out.println(checkUser(nif, "jesusledesma15@gmail.com"));
+        
+//        String nif = "87542132U";
+////        System.out.println(checkUser(nif, "salvi@hotmail.com"));
+//        
+//        System.out.println("idCliente con NIF "+nif+" -> " + getIdbyNif(nif));
 //        String nombre = "Paco";
 //        String apellidos = "Perez";
 //        String correo = "Paco2@hotmail.com";
 //        String dni = "77232323M";
 //        String numTarjeta = "4656651657841";
-//
-////        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
+//        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
 //        System.out.println(ClienteDAO.login(dni, correo));
     }
 }
