@@ -40,7 +40,7 @@
             <%
 
                 // Lista ordenada de reservas para un idCliente
-                ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(dniCliente));
+                ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas();
 
                 for (ReservaVO r : listaReservas) {
                     out.print("<tr><td>");
