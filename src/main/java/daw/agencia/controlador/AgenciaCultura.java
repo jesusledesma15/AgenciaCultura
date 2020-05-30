@@ -76,7 +76,7 @@ public class AgenciaCultura extends HttpServlet {
         String idServicio = request.getParameter("servicio");
         sesion.setAttribute("idServicio", idServicio);
 
-        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(dniCliente), Integer.parseInt(idServicio), LocalDate.now());
+        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(dniCliente), 1, LocalDate.now());
 
 //        if (ClienteDAO.checkUser(nifCli, correoCli)) {
 //            ReservaDAO.insertarReserva((ClienteDAO.getIdbyNif(dniCliente)), Integer.parseInt(idServicio), LocalDate.now());
