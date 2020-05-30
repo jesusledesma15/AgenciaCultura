@@ -13,14 +13,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="./css/estilo.css" rel="stylesheet" type="text/css">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hola ${sessionScope['nombreCliente']} ${sessionScope['apellidosCliente']} </h1>
-        <button type="button" onclick="location.href = './index.jsp'">Salir</button>
-        <button type="button" onclick="location.href= './contratarReserva.jsp'">Contratar reserva</button>
-        <button type="button" onclick="location.href= './verReservas.jsp'">Ver reserva</button>
-        <button type="button" onclick="location.href= './anularReserva.jsp'">Anular reserva</button>
-
+        <div class="contenedor">
+            <header>
+                <h1 id="saludo">Hola ${sessionScope['nombreCliente']} ${sessionScope['apellidosCliente']}Nombre Apellido </h1>
+                <div class="menu">                    
+                    <button type="button" onclick="location.href= './contratarReserva.jsp'"><span class="icon">&#128270;</span> Contratar reserva</button>
+                    <button type="button" onclick="location.href= './verReservas.jsp'"><span class="icon">&#x1f440;</span> Ver reserva</button>
+                    <button type="button" onclick="location.href= './anularReserva.jsp'"><span class="icon">&#10060;</span> Anular reserva</button>
+                    <button id="off" type="button" onclick="location.href = './index.jsp'"><span class="icon">&#x1f518; </span> Salir</button>
+                </div>
+            </header>
+        </div>
     </body>
 </html>
