@@ -18,9 +18,9 @@
     </head>
 
     <body>
-        <div id="contenedor">
+        <div class="contenedor">
             <header>
-                <h1>Agencia Cultural S&J</h1>
+                <h1 id="logo">Agencia Cultural S&J</h1>
                 <form action="./AgenciaCultura" method="POST">
                     <label for="correo"> Correo electrónico: </label>
                     <input type="email" size="40" name="txtCorreo" id="correo"/>
@@ -35,9 +35,6 @@
             <main>
 
             </main>
-
-
-
         </div>
     </body>
 </html>
