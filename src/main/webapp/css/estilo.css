@@ -15,7 +15,7 @@ body{
 	background-image: url("../imagenes/fondo.jpg");
 }
 
-div#contenedor{
+div.contenedor{
 	display: flex;
 	flex-basis: 95%;
 	background-color: white;
@@ -36,7 +36,7 @@ header{
 }
 header h1{
 	flex-basis: 20%;
-	color: red;
+	color: black;
 	margin-left: 2%;
 }
 header form{
@@ -47,4 +47,46 @@ header form{
 }
 header form input{
 	margin-right: 2%;
+}
+
+div.contenedor header div.menu{
+	display: flex;
+	flex-flow: row nowrap;
+	flex-basis: 70%;
+	justify-content: space-between;
+}
+
+div.contenedor header h1#saludo{
+	flex-basis: 30%;
+}
+
+div.contenedor header div.menu button{
+	background-color: #9CB6B2;
+	color: white;
+	font-size: 0.9em;
+	height: 4vh;
+	width: 18vh;
+	margin:1% 5%;
+	cursor: pointer;
+	border: 1px solid #343E3D;
+}
+div.contenedor header div.menu button span.icon{
+	font-size: 2vh;
+	margin-right: 1%;
+}
+div.contenedor header div.menu button:last-child{
+	background-color: white;
+	border: none;	
+}
+div.contenedor header div.menu button:last-child{
+	color: black;
+	font-weight: bold;
+	font-size: 1.4rem;
+}
+div.contenedor header div.menu button:hover{
+	background-color: #343E3D;
+}
+div.contenedor header div.menu button#off:hover{
+	background-color: white;
+	color: red;
 }
