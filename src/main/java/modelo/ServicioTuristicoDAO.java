@@ -71,6 +71,7 @@ public class ServicioTuristicoDAO {
             while (res.next()) {
                 ServicioTuristicoVO s = new ServicioTuristicoVO();
                 // Recogemos los datos del turismo, guardamos en un objeto
+                s.setIdServicio(res.getInt("idServicio"));
                 s.setDescripcion(res.getString("descripcion"));
                 s.setPrecio(res.getDouble("precio"));
 
