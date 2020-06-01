@@ -39,9 +39,12 @@
             <!--        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif("87542132U"));-->
 
             <%
+                    
+                    out.print(request.getAttribute("dni"));
+                    
 
                 // Lista ordenada de reservas para un idCliente
-                ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif("87542132U"));
+                ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif("22556699L"));
 
                 for (ReservaVO r : listaReservas) {
                     out.print("<tr><td>");
