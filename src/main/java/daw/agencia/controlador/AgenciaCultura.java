@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.ClienteDAO;
 import modelo.ReservaDAO;
+import modelo.ReservaVO;
 
 /**
  *
@@ -74,12 +75,18 @@ public class AgenciaCultura extends HttpServlet {
         String nifCli = request.getParameter("txtNif");
         String correoCli = request.getParameter("txtEmail");
         String idServicio = request.getParameter("servicio");
-        sesion.setAttribute("idServicio", idServicio);
+        sesion.setAttribute("nifCli", nifCli);
 
-        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(dniCliente), 1, LocalDate.now());
+        System.out.println("\n\nClienteDAO.checkUser(nifCli, correoCli) " + ClienteDAO.checkUser(nifCli, correoCli));
 
+        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(nifCli), 1, LocalDate.now());
+
+        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(nifCli));
+        
+        request.setAttribute("dni", request.getParameter("txtNombre"));
+        
 //        if (ClienteDAO.checkUser(nifCli, correoCli)) {
-//            ReservaDAO.insertarReserva((ClienteDAO.getIdbyNif(dniCliente)), Integer.parseInt(idServicio), LocalDate.now());
+//            ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(dniCliente), 1, LocalDate.now());
 //        }
 //-----------------------------------------------------------------------------
     }
