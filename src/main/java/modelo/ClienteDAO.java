@@ -270,7 +270,7 @@ public class ClienteDAO {
                 r.setIdReserva(res.getInt("idReserva"));
                 r.setIdCliente(res.getInt("idCliente"));
                 r.setIdServicio(res.getInt("idServicio"));
-//                r.setFecha(res.getDate(Date.valueOf(fecha)));
+                r.setFecha(res.getDate("fecha").toLocalDate());
 
                 //Añadimos el objeto al array
                 lista.add(r);
@@ -286,17 +286,19 @@ public class ClienteDAO {
         return lista;
     }
 
-    public static void main(String[] args) {
-
-        ArrayList<ReservaVO> listaReservas = consultarReservas(getIdbyNif("87542132U"));
+//    public static void main(String[] args) {
+//
+//        ArrayList<ReservaVO> listaReservas = consultarReservas(getIdbyNif("87542132U"));
+//        ArrayList<ReservaVO> listaReservas = consultarReservas();
+//
 //        
-        for (int i = 0; i < listaReservas.size(); i++) {
-            System.out.println(listaReservas.get(i));
-        }
-
+//        
+//        for (int i = 0; i < listaReservas.size(); i++) {
+//            System.out.println(listaReservas.get(i));
+//        }
+//
 //        String nif = "09077887J";
 //        System.out.println(checkUser(nif, "jesusledesma15@gmail.com"));
-        
 //        String nif = "87542132U";
 ////        System.out.println(checkUser(nif, "salvi@hotmail.com"));
 //        
@@ -308,5 +310,5 @@ public class ClienteDAO {
 //        String numTarjeta = "4656651657841";
 //        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
 //        System.out.println(ClienteDAO.login(dni, correo));
-    }
+//    }
 }
