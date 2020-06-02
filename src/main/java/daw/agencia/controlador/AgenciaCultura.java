@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import modelo.ClienteDAO;
 import modelo.ReservaDAO;
 import modelo.ReservaVO;
+import modelo.ServicioTuristicoVO;
 
 /**
  *
@@ -74,17 +75,29 @@ public class AgenciaCultura extends HttpServlet {
         //Contratar Reserva
         String nifCli = request.getParameter("txtNif");
         String correoCli = request.getParameter("txtEmail");
+        
         String idServicio = request.getParameter("servicio");
+        System.out.println("idServicio -- "+idServicio+ " int"+Integer.parseInt(idServicio));
+        int idServ=Integer.parseInt(idServicio);
+        
         sesion.setAttribute("nifCli", nifCli);
+        sesion.setAttribute("idServicio", idServicio);
 
-        System.out.println("\n\nClienteDAO.checkUser(nifCli, correoCli) " + ClienteDAO.checkUser(nifCli, correoCli));
+       
+        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(nifCli),
+                idServ, 
+                LocalDate.now());
 
-        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(nifCli), 1, LocalDate.now());
-
-        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(nifCli));
+//        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(nifCli));
         
-        request.setAttribute("dni", request.getParameter("txtNombre"));
-        
+//        request.setAttribute("dni", request.getParameter("txtNombre"));
+//         ServicioTuristicoVO st=new ServicioTuristicoVO();
+//        System.out.println("\n\nClienteDAO.checkUser(nifCli, correoCli) " + ClienteDAO.checkUser(nifCli, correoCli));
+//                System.out.println("correoCli "+ correoCli);
+//                System.out.println("nombreCliente "+ nombreCliente);
+//                System.out.println("getIdServicio "+ st.getIdServicio());
+//                System.out.println("getIdServicio "+ st.getDescripcion());
+
 //        if (ClienteDAO.checkUser(nifCli, correoCli)) {
 //            ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(dniCliente), 1, LocalDate.now());
 //        }
