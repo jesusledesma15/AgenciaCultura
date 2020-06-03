@@ -31,7 +31,7 @@
                     ArrayList<ServicioTuristicoVO> lista = ServicioTuristicoDAO.consultarServicios();
 
                     for (ServicioTuristicoVO s : lista) {
-                        out.print("<label for='" + s.getDescripcion() + "'>" + s.getDescripcion() + "</label> \t");
+                        out.print("<label for='" + s.getDescripcion() + "'>"+ s.getIdServicio()+". "+ s.getDescripcion() + "</label> \t");
                         out.print(s.getPrecio() + "€");
                         out.print("<input type='radio' name='servicio' id='" + s.getDescripcion() + "'   value='" + s.getIdServicio() + "'/>");
                         out.println("<br/><br/>");
