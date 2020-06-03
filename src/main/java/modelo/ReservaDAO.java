@@ -55,7 +55,24 @@ public class ReservaDAO {
 
         }
     }
-       
+    public static boolean deleteReserva(int idReserva) {
+        boolean numFilas = false;
+
+        String sql = "delete from reservas where idReserva = ?";
+
+        // Sentencia parametrizada
+        try (PreparedStatement prest = CONEXION.prepareStatement(sql)) {
+
+            // Establecemos los parámetros de la sentencia
+            prest.setInt(1, idReserva);
+            // Ejecutamos la sentencia
+            numFilas = prest.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Problemas durante el borrado de datos en la tabla reservas");
+            System.out.println(e);
+        }
+        return numFilas;
+    }
        
     public static int numIds() {
         Statement st;
@@ -91,7 +108,8 @@ public class ReservaDAO {
        
     public static void main(String[] args) {
 
-        ReservaDAO.insertarReserva(1, 1, LocalDate.now());
+        ReservaDAO.insertarReserva(2, 3, LocalDate.now());
+        ReservaDAO.deleteReserva(1);
 
     }
     
