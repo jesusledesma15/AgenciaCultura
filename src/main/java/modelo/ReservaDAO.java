@@ -108,7 +108,7 @@ public class ReservaDAO {
        
     public static void main(String[] args) {
 
-        ReservaDAO.insertarReserva(2, 3, LocalDate.now());
+       //ReservaDAO.insertarReserva(2, 3, LocalDate.now());
         ReservaDAO.deleteReserva(1);
 
     }
