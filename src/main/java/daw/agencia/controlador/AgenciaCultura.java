@@ -72,18 +72,11 @@ public class AgenciaCultura extends HttpServlet {
             despachador.forward(request, response);
 
         }
-        //Anular Reserva
-        String nifCli = request.getParameter("txtNif");
-        int idReserva = Integer.parseInt(request.getParameter("txtIdReserva"));
-        ArrayList<ReservaVO> reservaCliente = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(nifCli));
-        for (ReservaVO reserva : reservaCliente) {
-            if (reserva.getIdReserva() == (idReserva)) {
-                ReservaDAO.deleteReserva(idReserva);
-            }
-        }
 
         //Contratar Reserva
+        String nifCli = request.getParameter("txtNif");
         String correoCli = request.getParameter("txtEmail");
+
         String idServicio = request.getParameter("servicio");
         System.out.println("idServicio -- " + idServicio + " int" + Integer.parseInt(idServicio));
         int idServ = Integer.parseInt(idServicio);
