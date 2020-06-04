@@ -246,45 +246,45 @@ public class ClienteDAO {
     }
 
     //-----------------------------------------------------------------------------------
-//    //metodo para consultar las reservas, por id
-//    public static ArrayList<ReservaVO> consultarReservas(int idCliente) {
-//        Statement st;
-//        ResultSet res;
-//        ArrayList<ReservaVO> lista = new ArrayList();
-//
-//        // Guardo la consulta SQL realizar en una cadena
-//        String sql = "select * from reservas where idCliente='" + idCliente + "'";
-////        String sql = "select * from reservas ";
-//
-//        try {
-//
-//            // Preparamos Statement
-//            st = CONEXION.createStatement();
-//            // Ejecutamos la sentencia y obtenemos la tabla resultado
-//            res = st.executeQuery(sql);
-//            // Ahora construimos la lista
-//
-//            while (res.next()) {
-//                ReservaVO r = new ReservaVO();
-//                // Recogemos los datos del turismo, guardamos en un objeto
-//                r.setIdReserva(res.getInt("idReserva"));
-//                r.setIdCliente(res.getInt("idCliente"));
-//                r.setIdServicio(res.getInt("idServicio"));
-//                r.setFecha(res.getDate("fecha").toLocalDate());
-//
-//                //Añadimos el objeto al array
-//                lista.add(r);
-//            }
-//            // Cerramos el recurso PreparedStatement 
-//            st.close();
-//
-//        } catch (SQLException e) {
-//            System.out.println("Problemas durante la consulta en tabla reservas");
-//            System.out.println(e);
-//        }
-//
-//        return lista;
-//    }
+    //metodo para consultar las reservas, por id
+    public static ArrayList<ReservaVO> consultarReservas(int idCliente) {
+        Statement st;
+        ResultSet res;
+        ArrayList<ReservaVO> lista = new ArrayList();
+
+        // Guardo la consulta SQL realizar en una cadena
+        String sql = "select * from reservas where idCliente='" + idCliente + "'";
+//        String sql = "select * from reservas ";
+
+        try {
+
+            // Preparamos Statement
+            st = CONEXION.createStatement();
+            // Ejecutamos la sentencia y obtenemos la tabla resultado
+            res = st.executeQuery(sql);
+            // Ahora construimos la lista
+
+            while (res.next()) {
+                ReservaVO r = new ReservaVO();
+                // Recogemos los datos del turismo, guardamos en un objeto
+                r.setIdReserva(res.getInt("idReserva"));
+                r.setIdCliente(res.getInt("idCliente"));
+                r.setIdServicio(res.getInt("idServicio"));
+                r.setFecha(res.getDate("fecha").toLocalDate());
+
+                //Añadimos el objeto al array
+                lista.add(r);
+            }
+            // Cerramos el recurso PreparedStatement 
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas durante la consulta en tabla reservas");
+            System.out.println(e);
+        }
+
+        return lista;
+    }
 
 //    public static void main(String[] args) {
 //
