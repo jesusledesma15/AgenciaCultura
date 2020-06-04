@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -40,7 +41,6 @@ public class ReservaDAO {
             prest.setInt(2, idCliente);
             prest.setInt(3, idServicio);
             prest.setDate(4, java.sql.Date.valueOf(fecha));
-
 
             // Ejecutamos la sentencia de inserción preparada anteriormente
             prest.executeUpdate();
