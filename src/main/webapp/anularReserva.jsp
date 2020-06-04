@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Anular Reserva</h1>
-        <form action="./AgenciaCultura" method="post">
+        <form action="./AnularReservas" method="post">
             <label for="idReserva">ID Reserva: </label>
             <input type="text" id="idReserva" name="txtIdReserva"/> <br/><br/>
             <label for="nifCli">NIF: </label>
