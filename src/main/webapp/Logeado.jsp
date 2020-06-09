@@ -19,7 +19,7 @@
     <body>
         <div class="contenedor">
             <header>
-                <h1 id="saludo">Hola ${sessionScope['nombreCliente']} ${sessionScope['apellidosCliente']}Nombre Apellido </h1>
+                <h1 id="saludo">Hola ${sessionScope['dniCliente']} ${sessionScope['correoCliente']}</h1>
                 <div class="menu">                    
                     <button type="button" onclick="location.href= './contratarReserva.jsp'"><span class="icon">&#128270;</span> Contratar reserva</button>
                     <button type="button" onclick="location.href= './verReservas.jsp'"><span class="icon">&#x1f440;</span> Ver reserva</button>
