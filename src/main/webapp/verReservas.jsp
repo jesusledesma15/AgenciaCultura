@@ -18,48 +18,56 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="./css/estilo.css" rel="stylesheet" type="text/css">
         <title>Reservas por clientes</title>
+        
     </head>
     <body>
         <h1>Reservas por clientes</h1>
-        <table border ="1">
+        <div >
+            <main>
+                <table border ="1">
 
-            <tr>
-                <th>
-                    <b>IdReserva</b>
-                </th>
-                <th>
-                    <b>IdCliente</b>
-                </th>
-                <th>
-                    <b>IdServicio</b>
-                </th>
-                <th>
-                    <b>fecha</b>
-                </th>
-            </tr>
-            <!--        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif("87542132U"));-->
+                    <tr>
+                        <th>
+                            <b>IdReserva</b>
+                        </th>
+                        <th>
+                            <b>IdCliente</b>
+                        </th>
+                        <th>
+                            <b>IdServicio</b>
+                        </th>
+                        <th>
+                            <b>fecha</b>
+                        </th>
+                    </tr>
+                    <!--        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif("87542132U"));-->
 
-            <%
-                   
-               
-                // Lista ordenada de reservas para un idCliente
-                ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(session.getAttribute("dniCliente").toString()));
+                    <%
 
-                for (ReservaVO r : listaReservas) {
-                    out.print("<tr><td>");
-                    out.print(r.getIdReserva());
-                    out.print("</td><td>");
-                    out.print(r.getIdCliente());
-                    out.print("</td><td>");
-                    out.print(r.getIdServicio());
-                    out.print("</td><td>");
-                    out.print(r.getFecha());
-                    out.print("</td><tr>");
+                        // Lista ordenada de reservas para un idCliente
+                        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(session.getAttribute("dniCliente").toString()));
 
-                }
-            %>
+                        for (ReservaVO r : listaReservas) {
+                            out.print("<tr><td>");
+                            out.print(r.getIdReserva());
+                            out.print("</td><td>");
+                            out.print(r.getIdCliente());
+                            out.print("</td><td>");
+                            out.print(r.getIdServicio());
+                            out.print("</td><td>");
+                            out.print(r.getFecha());
+                            out.print("</td><tr>");
 
-        </table>
-            <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
+                        }
+                    %>
+
+                </table>
+                <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
+
+            </main>
+
+        </div>
+
+
     </body>
 </html>
