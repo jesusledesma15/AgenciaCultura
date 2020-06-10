@@ -5,7 +5,6 @@
  */
 package modelo;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,10 +18,10 @@ import java.util.ArrayList;
  * @author Salva
  */
 public class ReservaDAO {
-    
-      private static final Connection CONEXION = Conexion.getInstance();
 
-       public static void insertarReserva(int idCliente, int idServicio, LocalDate fecha) {
+    private static final Connection CONEXION = Conexion.getInstance();
+
+    public static boolean insertarReserva(int idCliente, int idServicio, LocalDate fecha) {
 
         // Cadena con la consulta parametrizada
         String sql = "insert into reservas values (?,?,?,?)";
@@ -47,14 +46,16 @@ public class ReservaDAO {
 
             // Cerramos el recurso PreparedStatement 
             prest.close();
-
+            return true;
             // La inserción se realizó con éxito, devolvemos filas afectadas
         } catch (SQLException e) {
             System.out.println("Problemas durante la inserción de datos en la tabla Reservas");
             System.out.println(e);
+            return false;
 
         }
     }
+
     public static boolean deleteReserva(int idReserva) {
         boolean numFilas = false;
 
@@ -73,7 +74,7 @@ public class ReservaDAO {
         }
         return numFilas;
     }
-       
+
     public static int numIds() {
         Statement st;
         ResultSet res;
@@ -105,12 +106,14 @@ public class ReservaDAO {
 
         return ++numReservas;
     }
-       
+
     public static void main(String[] args) {
 
-       //ReservaDAO.insertarReserva(2, 3, LocalDate.now());
-        ReservaDAO.deleteReserva(1);
+        ReservaDAO.insertarReserva(2, 3, LocalDate.now());
+        ReservaDAO.insertarReserva(1, 2, LocalDate.now());
+        ReservaDAO.insertarReserva(3, 1, LocalDate.now());
+        // ReservaDAO.deleteReserva(1);
 
     }
-    
+
 }
