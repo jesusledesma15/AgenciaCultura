@@ -121,9 +121,4 @@ public class ServicioTuristicoDAO {
         return ++numServicio;
     }
 
-    public static void main(String[] args) {
-
-        ServicioTuristicoDAO.insertarServicio("Museo", 50);
-
-    }
 }
