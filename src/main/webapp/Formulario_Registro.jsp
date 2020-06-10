@@ -36,6 +36,7 @@
             <p> <input type="submit" name="buttonSubmit" value="Enviar"> 
                 <input type="reset" name="buttonReset" value="Reset"> </p>
         </form>
+        <button type="button" onclick="location.href = './index.jsp'">Volver</button>
     </body>
 </html>
 
