@@ -51,9 +51,9 @@ public class ReservaDAO {
         } catch (SQLException e) {
             System.out.println("Problemas durante la inserción de datos en la tabla Reservas");
             System.out.println(e);
-            return false;
 
         }
+        return false;
     }
 
     public static boolean deleteReserva(int idReserva) {
