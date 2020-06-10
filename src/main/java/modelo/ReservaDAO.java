@@ -107,13 +107,4 @@ public class ReservaDAO {
         return ++numReservas;
     }
 
-    public static void main(String[] args) {
-
-        ReservaDAO.insertarReserva(2, 3, LocalDate.now());
-        ReservaDAO.insertarReserva(1, 2, LocalDate.now());
-        ReservaDAO.insertarReserva(3, 1, LocalDate.now());
-        // ReservaDAO.deleteReserva(1);
-
-    }
-
 }
