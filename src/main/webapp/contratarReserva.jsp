@@ -17,14 +17,7 @@
     </head>
     <body>
         <h1>Contratando una reserva</h1>
-        <form action="./AgenciaCultura" method="post">
-            <fieldset>
-                <legend>Cliente</legend>
-                <label for="nombreCli">Correo: </label>
-                <input type="text" id="nombreCli" name="txtEmail"/> <br/><br/>
-                <label for="nifCli">NIF: </label>
-                <input type="text" id="nifCli" name="txtNif" maxlength="9"/> <br/>
-            </fieldset>
+        <form action="./ContratarReserva" method="post">
             <fieldset>
                 <legend>Servicio</legend>
                 <%
@@ -43,7 +36,8 @@
             <br/>
             <input type="submit" value="Enviar" name="Enviar"/>
             <input type="reset" value="Limpiar Formulario" name="Reset"/>
+            <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>            
         </form>
-        <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
+        
     </body>
 </html>
