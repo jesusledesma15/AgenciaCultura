@@ -6,8 +6,6 @@
 package daw.agencia.controlador;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.ClienteDAO;
-import modelo.ReservaDAO;
-import modelo.ReservaVO;
 
 ;
 
@@ -56,11 +52,8 @@ public class AgenciaCultura extends HttpServlet {
 
         // Asigno esos datos a los atributos de la sesión y así lo puedo usar en la vista
         sesion.setAttribute("nombreCliente", nombreCliente);
-//        sesion.setAttribute("apellidosCliente", apellidosCliente);
-//        sesion.setAttribute("correoCliente", correoCliente);
-//        sesion.setAttribute("dniCliente", dniCliente);
-//        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
-
+        sesion.setAttribute("correoCliente", correoCliente);
+        sesion.setAttribute("dniCliente", dniCliente);
 //--------------------------------------------------------------------------------------------------------------
         //parte del login        
         //Si el metodo login devuelve true, se envia a la pagina principal, sino no pasa de la pagina index
@@ -72,33 +65,6 @@ public class AgenciaCultura extends HttpServlet {
             despachador.forward(request, response);
 
         }
-
-        //Contratar Reserva
-        String nifCli = request.getParameter("txtNif");
-        String correoCli = request.getParameter("txtEmail");
-
-        String idServicio = request.getParameter("servicio");
-        System.out.println("idServicio -- " + idServicio + " int" + Integer.parseInt(idServicio));
-        int idServ = Integer.parseInt(idServicio);
-
-        sesion.setAttribute("nifCli", nifCli);
-        sesion.setAttribute("idServicio", idServicio);
-
-        ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(nifCli),
-                idServ,
-                LocalDate.now());
-
-//        ArrayList<ReservaVO> listaReservas = ClienteDAO.consultarReservas(ClienteDAO.getIdbyNif(nifCli));
-//        request.setAttribute("dni", request.getParameter("txtNombre"));
-//         ServicioTuristicoVO st=new ServicioTuristicoVO();
-//        System.out.println("\n\nClienteDAO.checkUser(nifCli, correoCli) " + ClienteDAO.checkUser(nifCli, correoCli));
-//                System.out.println("correoCli "+ correoCli);
-//                System.out.println("nombreCliente "+ nombreCliente);
-//                System.out.println("getIdServicio "+ st.getIdServicio());
-//                System.out.println("getIdServicio "+ st.getDescripcion());
-//        if (ClienteDAO.checkUser(nifCli, correoCli)) {
-//            ReservaDAO.insertarReserva(ClienteDAO.getIdbyNif(dniCliente), 1, LocalDate.now());
-//        }
 //-----------------------------------------------------------------------------
     }
 
