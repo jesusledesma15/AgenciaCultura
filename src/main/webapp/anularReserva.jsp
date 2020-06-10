@@ -21,5 +21,6 @@
             <input type="text" id="nifCli" name="txtNif" maxlength="9"/> <br/>
             <input type="submit" value="Cancelar" name="Cancelar"/>
         </form>
+        <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
     </body>
 </html>
