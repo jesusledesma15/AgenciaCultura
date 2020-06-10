@@ -43,5 +43,6 @@
             <input type="submit" value="Enviar" name="Enviar"/>
             <input type="reset" value="Limpiar Formulario" name="Reset"/>
         </form>
+            <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
     </body>
 </html>
