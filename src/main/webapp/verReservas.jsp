@@ -61,5 +61,6 @@
             %>
 
         </table>
+            <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
     </body>
 </html>
