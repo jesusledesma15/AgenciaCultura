@@ -82,7 +82,7 @@ public class ReservaDAO {
 
         // Guardo la consulta SQL realizar en una cadena
         //hacer consulta para contar, los emails
-        String sql = "select count(*) as num from reservas ";
+        String sql = "select max(idReserva) as num from reservas";
         try {
 
             // Preparamos Statement
