@@ -20,7 +20,8 @@
             <label for="nifCli">NIF: </label>
             <input type="text" id="nifCli" name="txtNif" maxlength="9"/> <br/>
             <input type="submit" value="Cancelar" name="Cancelar"/>
+            <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
         </form>
-        <button type="button" onclick="location.href = './Logeado.jsp'">Volver</button>
+        
     </body>
 </html>
