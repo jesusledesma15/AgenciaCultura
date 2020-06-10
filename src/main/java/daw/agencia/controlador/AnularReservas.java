@@ -6,8 +6,6 @@
 package daw.agencia.controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -27,12 +25,13 @@ import modelo.ReservaVO;
  */
 @WebServlet(name = "AnularReservas", urlPatterns = {"/AnularReservas"})
 public class AnularReservas extends HttpServlet {
- // El siguiente método procesa la petición para métodos GET y POST
+    // El siguiente método procesa la petición para métodos GET y POST
     // Tiene dos parámetros:
     //  -   request objeto tipo HTTPServletRequest con info de la 
     //      petición del cliente
     //  -   response objeto tipo HTTPServletResponse con info de la 
     //      respuesta al cliente
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -49,20 +48,11 @@ public class AnularReservas extends HttpServlet {
 
         // Guardo los datos del cliente en Strings
         String nombreCliente = request.getParameter("txtNombre");
-        String apellidosCliente = request.getParameter("txtApellidos");
-        String correoCliente = request.getParameter("txtCorreo");
-        String dniCliente = request.getParameter("txtDni");
-        String numTarjetaCliente = request.getParameter("txtNumTarjeta");
 
         // Asigno esos datos a los atributos de la sesión y así lo puedo usar en la vista
         sesion.setAttribute("nombreCliente", nombreCliente);
-//        sesion.setAttribute("apellidosCliente", apellidosCliente);
-//        sesion.setAttribute("correoCliente", correoCliente);
-//        sesion.setAttribute("dniCliente", dniCliente);
-//        sesion.setAttribute("numTarjetaCliente", numTarjetaCliente);
 
 //--------------------------------------------------------------------------------------------------------------
-
         //Anular Reserva
         String nifCli = request.getParameter("txtNif");
         int idReserva = Integer.parseInt(request.getParameter("txtIdReserva"));
@@ -70,9 +60,10 @@ public class AnularReservas extends HttpServlet {
         for (ReservaVO reserva : reservaCliente) {
             if (reserva.getIdReserva() == (idReserva)) {
                 ReservaDAO.deleteReserva(idReserva);
+                RequestDispatcher despachador = contexto.getRequestDispatcher("/anularReserva.jsp");
+                despachador.forward(request, response);
             }
         }
-
 
 //-----------------------------------------------------------------------------
     }
@@ -96,8 +87,6 @@ public class AnularReservas extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-
     /**
      * Returns a short description of the servlet.
      *
