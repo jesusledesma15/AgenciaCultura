@@ -178,7 +178,7 @@ public class ClienteDAO {
 
         // Guardo la consulta SQL realizar en una cadena
         //hacer consulta para contar, los emails
-        String sql = "select count(*) as dni from clientes where dni='" + dni + "'";
+        String sql = "select max(*) as dni from clientes where dni='" + dni + "'";
         try {
 
             // Preparamos Statement
@@ -211,7 +211,7 @@ public class ClienteDAO {
     }
     //-----------------------------------------------------------------------------------
 
-    //metodo que devuelve el id siguiente del cliente, se usara para asignar una id al siguiente cliente
+    //metodo que devuelve el último id +1, se usara para asignar una id al siguiente cliente
     public static int numIds() {
         Statement st;
         ResultSet res;
@@ -219,7 +219,7 @@ public class ClienteDAO {
 
         // Guardo la consulta SQL realizar en una cadena
         //hacer consulta para contar, los emails
-        String sql = "select count(*) as num from clientes ";
+        String sql = "select max(idCliente) as num from clientes ";
         try {
 
             // Preparamos Statement
@@ -286,29 +286,4 @@ public class ClienteDAO {
         return lista;
     }
 
-//    public static void main(String[] args) {
-//
-//        ArrayList<ReservaVO> listaReservas = consultarReservas(getIdbyNif("87542132U"));
-//        ArrayList<ReservaVO> listaReservas = consultarReservas();
-//
-//        
-//        
-//        for (int i = 0; i < listaReservas.size(); i++) {
-//            System.out.println(listaReservas.get(i));
-//        }
-//
-//        String nif = "09077887J";
-//        System.out.println(checkUser(nif, "jesusledesma15@gmail.com"));
-//        String nif = "87542132U";
-////        System.out.println(checkUser(nif, "salvi@hotmail.com"));
-//        
-//        System.out.println("idCliente con NIF "+nif+" -> " + getIdbyNif(nif));
-//        String nombre = "Paco";
-//        String apellidos = "Perez";
-//        String correo = "Paco2@hotmail.com";
-//        String dni = "77232323M";
-//        String numTarjeta = "4656651657841";
-//        ClienteDAO.insertarCliente(nombre, apellidos, correo, dni, numTarjeta);
-//        System.out.println(ClienteDAO.login(dni, correo));
-//    }
 }
